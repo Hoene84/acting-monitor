@@ -1,0 +1,43 @@
+Executor
+    get
+        test []
+            testId
+            availableFor
+                type
+                requiredParams
+                run                
+                    every
+                    at
+    put
+        test
+            params
+                testId
+                params
+            return testresult
+                testId
+                testRunId
+                instanceId
+                startTimestamp
+                executionTime
+                result
+            
+
+
+Scheduler
+    - gets instances from Orchestrator
+    - ask Executors for tests
+    - runs tests
+
+
+Orchestrator
+    get
+        instance
+            id string
+            type string
+            params []
+            executors []
+            publishTo
+
+Actor
+    receives
+        testresult
