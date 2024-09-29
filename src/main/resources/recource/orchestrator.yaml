@@ -1,0 +1,13 @@
+get:
+  tags:
+    - orchestrator
+  operationId: getInstances
+  responses:
+    200:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas.yaml#/Instance"

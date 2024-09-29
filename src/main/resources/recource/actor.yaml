@@ -1,0 +1,30 @@
+post:
+  tags:
+    - actor
+  operationId: receive
+  parameters:
+    - name: testResult
+      in: path
+      required: true
+      schema:
+        $ref: "../schemas.yaml#/TestResult"
+    - name: testId
+      in: path
+      required: true
+      schema:
+        $ref: "../schemas.yaml#/TestId"
+    - name: instanceId
+      in: path
+      required: true
+      schema:
+        $ref: "../schemas.yaml#/InstanceId"
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas.yaml#/TestExecution"
+  responses:
+    204:
+      description: Ok

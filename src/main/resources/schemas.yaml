@@ -1,0 +1,78 @@
+Instance:
+  type: "object"
+  properties:
+    id:
+      $ref: "#/InstanceId"
+    type:
+      $ref: "#/InstanceType"
+    params:
+      $ref: "#/TestParams"
+    executors:
+      type: array
+      items:
+        type: string
+    publishTo:
+      type: array
+      items:
+        type: string
+
+TestParams:
+  type: object
+  additionalProperties:
+    type: string
+
+TestRef:
+  type: object
+  required: # List the required properties here
+    - id
+    - suitableFor
+    - requiredParams
+    - frequency
+  properties:
+    id:
+      $ref: "#/TestId"
+    suitableFor:
+      $ref: "#/InstanceType"
+    requiredParams:
+      type: array
+      items:
+        type: string
+    frequency:
+      $ref: "#/Scheduling"
+
+InstanceType:
+  type: string
+
+TestId:
+  type: string
+
+InstanceId:
+  type: string
+
+Scheduling:
+  type: string
+  enum:
+    - SECOND
+    - MINUTE
+    - HOUR
+
+TestExecution:
+  type: "object"
+  properties:
+    testRunId:
+      type: string
+    startTimestamp:
+      type: string
+      format: date-time
+    executionTimeInMillis:
+      type: integer
+    result:
+      type: object
+
+TestResult:
+  type: string
+  enum:
+    - ERROR
+    - FAILED
+    - SUCCESS
+    - WARNING

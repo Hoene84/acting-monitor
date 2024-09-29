@@ -1,0 +1,19 @@
+openapi: "3.0.0"
+info:
+  title: Monitoring
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8080'
+paths:
+  /actor/v1/{instanceId}/{testId}/{testResult}:
+    $ref: "recource/actor.yaml"
+  /orchestrator/v1:
+    $ref: "recource/orchestrator.yaml"
+  /executor/v1:
+    $ref: "recource/executor.yaml"
+  /executor/v1/{instanceId}/{testId}:
+    $ref: "recource/execution.yaml"
+
+components:
+  schemas:
+    $ref: "schemas.yaml"

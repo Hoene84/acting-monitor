@@ -1,0 +1,32 @@
+post:
+  tags:
+    - executor
+  operationId: execute
+  parameters:
+    - name: instanceId
+      in: path
+      required: true
+      schema:
+        $ref: "../schemas.yaml#/InstanceId"
+    - name: testId
+      in: path
+      required: true
+      schema:
+        $ref: "../schemas.yaml#/TestId"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            publishTo:
+              type: array
+              items:
+                type: string
+            params:
+              $ref: "../schemas.yaml#/TestParams"
+
+  responses:
+    204:
+      description: Ok
