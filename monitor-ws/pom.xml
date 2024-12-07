@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ch.hoene</groupId>
+        <artifactId>monitor</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <groupId>ch.hoene</groupId>
+    <artifactId>monitor-ws</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>monitor-ws</name>
+    <description>monitor-ws</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/generated</directory>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/main/generated/client</source>
+                                <source>src/main/generated/server</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.62</version>
+                <executions>
+                    <execution>
+                        <id>generate-openapi.yaml</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/monitoring.yaml</inputSpec>
+                            <language>openapi-yaml</language>
+                            <output>target</output>
+                            <configOptions>
+                                <outputFile>openapi.yaml</outputFile>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-java</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/target/openapi.yaml</inputSpec>
+                            <language>java</language>
+
+                            <apiPackage>ch.hoene.monitor.client.api</apiPackage>
+                            <modelPackage>ch.hoene.monitor.model</modelPackage>
+                            <invokerPackage>ch.hoene.monitor.client.invoker</invokerPackage>
+
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <!--                            <generateModels>false</generateModels>-->
+                            <generateModelDocumentation>false</generateModelDocumentation>
+
+                            <output>src/main/generated</output>
+                            <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
+                                <dateLibrary>java8</dateLibrary>
+                                <sourceFolder>client</sourceFolder>
+                                <!--                                <sourceFolder>client</sourceFolder>-->
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-spring</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/target/openapi.yaml</inputSpec>
+                            <language>spring</language>
+
+                            <apiPackage>ch.hoene.monitor.server.api</apiPackage>
+                            <modelPackage>ch.hoene.monitor.model</modelPackage>
+                            <invokerPackage>ch.hoene.monitor.server.invoker</invokerPackage>
+
+                            <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModels>false</generateModels>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+
+                            <output>src/main/generated</output>
+                            <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
+                                <dateLibrary>java8</dateLibrary>
+                                <sourceFolder>server</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

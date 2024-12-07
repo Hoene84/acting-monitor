@@ -1,15 +1,14 @@
 package ch.hoene.monitor.controller;
 
+import ch.hoene.monitor.model.Instance;
 import ch.hoene.monitor.model.TestParams;
 import ch.hoene.monitor.server.api.OrchestratorApi;
-import ch.hoene.monitor.model.Instance;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class OrchestratorController implements OrchestratorApi {

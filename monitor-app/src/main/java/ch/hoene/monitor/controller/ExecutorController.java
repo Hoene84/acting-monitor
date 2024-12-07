@@ -5,7 +5,6 @@ import ch.hoene.monitor.client.invoker.ApiClient;
 import ch.hoene.monitor.model.*;
 import ch.hoene.monitor.server.api.ExecutorApi;
 import ch.hoene.monitor.util.LoggingApiCallback;
-import org.joda.time.field.OffsetDateTimeField;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatusCode;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
