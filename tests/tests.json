@@ -1,0 +1,10 @@
+[
+  {
+    "id": "ping",
+    "suitableFor": "website",
+    "requiredParams": ["url"],
+    "frequency": "SECOND",
+    "script": "ping.sh",
+    "scriptType": "BASH"
+  }
+]

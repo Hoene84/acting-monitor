@@ -1,0 +1,173 @@
+{
+  "components" : {
+    "wf" : {
+      "instances": ["wf"],
+      "childs": []
+    },
+    "ix" : {
+      "instances": ["ix"],
+      "childs": []
+    },
+    "basisTomcat1" : {
+      "instances": [],
+      "childs": [
+        "AdminConsole",
+        "as",
+        "ig2",
+        "imo",
+        "ix",
+        "wf"
+      ]
+    },
+    "basisTomcat2" : {
+      "instances": [
+        "basisTomcat2"
+      ],
+      "childs": [
+        "sl"
+      ]
+    },
+    "basisTomcat4" : {
+      "instances": [
+        "basisTomcat4"
+      ],
+      "childs": [
+        "AdminConsole",
+        "as",
+        "ig2",
+        "imo",
+        "ix",
+        "wf"
+      ]
+    },
+    "basisTomcat5" : {
+      "instances": [
+        "basisTomcat5"
+      ],
+      "childs": [
+        "im"
+      ]
+    },
+    "basisVm1" : {
+      "instances": [
+        "basisVm1"
+      ],
+      "childs": [
+        "basisTomcat1",
+        "basisTomcat2"
+      ]
+    },
+    "basisVm2" : {
+      "instances": [
+        "basisVm2"
+      ],
+      "childs": [
+        "basisTomcat4",
+        "basisTomcat5"
+      ]
+    },
+    "basis" : {
+      "instances": [
+        "app",
+        "asz",
+        "azl",
+        "bva",
+        "cms",
+        "das",
+        "dib",
+        "edu",
+        "erz",
+        "ewz",
+        "ffs",
+        "fid",
+        "fvw",
+        "geo",
+        "grz",
+        "gsz",
+        "gud",
+        "hbd",
+        "hrz2",
+        "keb",
+        "ktr",
+        "lsz",
+        "mke",
+        "oiz",
+        "prd",
+        "rek",
+        "sap",
+        "sar",
+        "sid",
+        "skz",
+        "sod",
+        "soz",
+        "ssd1",
+        "sst",
+        "ssz",
+        "ste",
+        "stp",
+        "stz",
+        "szh",
+        "szh1",
+        "szh3",
+        "taz",
+        "ugz",
+        "vbz",
+        "wvz",
+        "xkh",
+        "zfg",
+        "zfk",
+        "zrh",
+        "zrh1",
+        "zrh5"
+      ],
+      "childs": [
+        "basisVm1",
+        "basisVm2"
+      ]
+    },
+    "isearch" : {
+      "instances": [
+        "isc1",
+        "isc2",
+        "isc3"
+      ],
+      "childs": []
+    },
+    "stage" : {
+      "instances": [
+        "dev",
+        "int"
+      ],
+      "childs": [
+        "basis",
+        "isearch"
+      ]
+    },
+    "root" : {
+      "instances": [],
+      "childs": [
+        "stage"
+      ]
+    }
+  },
+  "params": {
+    "wf": {
+      "statusPage": "{param.ixProxy}wf/wf?__cmd__=status"
+    },
+    "basisVm1": {
+      "hostname": "{{instanceName.basis}.lower}elo1{{{instanceName.stage}.lower}.firstletter}s.global.szh.loc",
+      "ixProxy": "https://{param.hostname}/ix-{{instanceName.basis}.upper}_ELO_DM01/plugin/de.elo.ix.plugin.proxy/"
+    },
+    "basisVm2": {
+      "hostname": "{{instanceName.basis}.lower}elo2{{{instanceName.stage}.lower}.firstletter}s.global.szh.loc",
+      "ixProxy": "https://{param.hostname}/ix-{{instanceName.basis}.upper}_ELO_DM01/plugin/de.elo.ix.plugin.proxy/"
+    },
+    "basis": {
+      "hostnameLoadbalancer": "{{instanceName.basis}.lower}eloix{{{instanceName.stage}.lower}.firstletter}s.global.szh.loc"
+    },
+    "root" : {
+      "executors": ["http://localhost:8001"],
+      "publishTo": ["http://localhost:8003"]
+    }
+  }
+}
