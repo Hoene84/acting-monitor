@@ -1,4 +1,4 @@
-package ch.hoene.monitor.controller;
+package ch.hoene.monitor.executor.controller;
 
 import ch.hoene.monitor.client.api.ActorApi;
 import ch.hoene.monitor.client.invoker.ApiClient;

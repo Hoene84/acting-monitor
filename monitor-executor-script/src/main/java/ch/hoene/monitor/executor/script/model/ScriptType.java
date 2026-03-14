@@ -1,4 +1,4 @@
-package ch.hoene.model;
+package ch.hoene.monitor.executor.script.model;
 
 public enum ScriptType {
     BASH("bash"),

@@ -1,4 +1,4 @@
-package ch.hoene.monitor.controller;
+package ch.hoene.monitor.orchestrator.controller;
 
 import ch.hoene.monitor.model.Instance;
 import ch.hoene.monitor.model.TestParams;

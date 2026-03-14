@@ -2,7 +2,7 @@
   <configuration default="false" name="MonitorExecutorScriptApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
     <module name="monitor-executor-script" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="ch.hoene.monitor.MonitorExecutorScriptApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ch.hoene.monitor.ExecutorScriptApplication" />
     <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
     <extension name="coverage">
       <pattern>

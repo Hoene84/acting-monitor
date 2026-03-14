@@ -1,8 +1,8 @@
-package ch.hoene.monitor.controller;
+package ch.hoene.monitor.executor.script.controller;
 
-import ch.hoene.model.ScriptTestRef;
-import ch.hoene.model.ScriptTestResult;
-import ch.hoene.model.ScriptType;
+import ch.hoene.monitor.executor.script.model.ScriptTestRef;
+import ch.hoene.monitor.executor.script.model.ScriptTestResult;
+import ch.hoene.monitor.executor.script.model.ScriptType;
 import ch.hoene.monitor.client.api.ActorApi;
 import ch.hoene.monitor.client.invoker.ApiClient;
 import ch.hoene.monitor.model.InstanceIdTestIdBody;

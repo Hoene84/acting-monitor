@@ -1,4 +1,4 @@
-package ch.hoene.monitor.controller;
+package ch.hoene.monitor.actor.controller;
 
 import ch.hoene.monitor.model.TestExecution;
 import ch.hoene.monitor.model.TestResult;

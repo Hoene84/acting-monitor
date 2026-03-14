@@ -1,4 +1,4 @@
-package ch.hoene.model;
+package ch.hoene.monitor.executor.script.model;
 
 import ch.hoene.monitor.model.TestRef;
 
