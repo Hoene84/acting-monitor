@@ -21,6 +21,7 @@
     <modules>
         <module>monitor-ws</module>
         <module>monitor-app</module>
+        <module>monitor-executor-script</module>
     </modules>
 
     <dependencies>

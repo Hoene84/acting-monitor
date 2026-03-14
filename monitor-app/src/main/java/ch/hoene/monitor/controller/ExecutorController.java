@@ -25,11 +25,9 @@ public class ExecutorController implements ExecutorApi {
         return new ResponseEntity<>(
                 List.of(
                         new TestRef()
-                                .id("TestId")
+                                .id("NoopTest")
                                 .suitableFor("website")
-                                .frequency(Scheduling.SECOND)
-                                .addRequiredParamsItem("url")
-                ),
+                                .frequency(Scheduling.SECOND)                ),
                 HttpStatusCode.valueOf(200));
     }
 
@@ -45,7 +43,7 @@ public class ExecutorController implements ExecutorApi {
                                 .testRunId(UUID.randomUUID().toString())
                                 .executionTimeInMillis(5)
                                 .startTimestamp(OffsetDateTime.now()),
-                        TestResult.WARNING,
+                        TestResult.SUCCESS,
                         testId,
                         instanceId,
                         new LoggingApiCallback<>(logger, pulishTo));
