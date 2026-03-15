@@ -1,8 +1,8 @@
 [
   {
     "id": "ping",
-    "suitableFor": "website",
-    "requiredParams": ["url"],
+    "suitableFor": "host",
+    "requiredParams": ["host"],
     "frequency": "SECOND",
     "script": "ping.sh",
     "scriptType": "BASH"

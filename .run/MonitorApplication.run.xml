@@ -3,6 +3,7 @@
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
     <module name="monitor-app" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="ch.hoene.monitor.MonitorApplication" />
+    <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="ch.hoene.monitor.*" />

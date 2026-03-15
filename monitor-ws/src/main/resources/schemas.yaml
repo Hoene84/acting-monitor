@@ -3,8 +3,14 @@ Instance:
   properties:
     id:
       $ref: "#/InstanceId"
-    type:
-      $ref: "#/InstanceType"
+    parents:
+      type: array
+      items:
+        type: string
+    types:
+      type: array
+      items:
+        $ref: "#/InstanceType"
     params:
       $ref: "#/TestParams"
     executors:
@@ -28,6 +34,7 @@ TestRef:
     - suitableFor
     - requiredParams
     - frequency
+    - publishTo
   properties:
     id:
       $ref: "#/TestId"
@@ -39,6 +46,10 @@ TestRef:
         type: string
     frequency:
       $ref: "#/Scheduling"
+    publishTo:
+      type: array
+      items:
+        type: string
 
 InstanceType:
   type: string

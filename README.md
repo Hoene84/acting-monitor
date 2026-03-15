@@ -1,6 +1,13 @@
 
 # acting-monitor
 
+## Architecture
+
+### Orchestrator
+#### Instance
+- types: Instance gets only tested by tests supporting one of the defined types. Types contains always the component id.
+
+
 ## Development
 
 ### Start
@@ -19,4 +26,7 @@ Launch the module directly from the IDE (tested in IntelliJ). It is much easier 
   * pro: The reduce of logic if centralized is minimal (avoids a loop)
   * cons: If the endpoint is not reachable, there should be a log event
     (this should be implemented in a robust logging concept anyway or taken over by a monitor monitor)
+  * publishTo can be defined in:
+    * TestRef: For test specific actors like a restart script 
+    * Instance: For general monitor overviews like a UI or an elastic connector
 

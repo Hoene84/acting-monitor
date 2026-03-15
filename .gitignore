@@ -1,4 +1,3 @@
-/infrastructure/infrastructure.json
 *.class
 /src/main/generated
 .attach_pid*

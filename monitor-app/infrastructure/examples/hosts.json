@@ -1,0 +1,35 @@
+{
+  "components" : {
+    "google" : {
+      "instances": [
+        "google.de",
+        "google.fr",
+        "google.com"
+      ],
+      "types": ["host"]
+    },
+    "host" : {
+      "instances": [
+        "localhost",
+        "127.0.0.1"
+      ]
+    },
+    "root" : {
+      "childs": [
+        "google",
+        "host"
+      ]
+    }
+  },
+  "params": {
+    "instances": {
+      "localhost": { "host" : "localhost" },
+      "127.0.0.1": { "host" : "127.0.0.1" },
+      "google.de": { "host" : "google.de" },
+      "google.fr": { "host" : "google.fr" },
+      "google.com": { "host" : "google.com" }
+    }
+  },
+  "defaultExecutors": ["http://localhost:8090"],
+  "defaultActors": ["http://localhost:8080"]
+}

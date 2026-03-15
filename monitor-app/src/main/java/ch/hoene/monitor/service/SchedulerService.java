@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Component
@@ -54,7 +56,7 @@ public class SchedulerService {
                     ExecutorApi executorApi = new ExecutorApi(apiClient);
                     try {
                         executorApi.getTestsAsync(new LoggingApiCallback<>(logger, executor, testRefs -> testRefs.stream()
-                                .filter(testRef -> testRef.getSuitableFor().equals(instance.getType()))
+                                .filter(testRef -> instance.getTypes().contains(testRef.getSuitableFor()))
                                 .forEach(testRef -> {
                                     List<String> missingParams = testRef.getRequiredParams().stream().filter(e -> !instance.getParams().containsKey(e)).toList();
                                     if (missingParams.isEmpty()) {
@@ -71,7 +73,10 @@ public class SchedulerService {
                                                         executorApi.executeAsync(
                                                                 new InstanceIdTestIdBody()
                                                                         .params(instance.getParams())
-                                                                        .publishTo(instance.getPublishTo()),
+                                                                        .publishTo(Stream.concat(
+                                                                                        testRef.getPublishTo().stream(),
+                                                                                        instance.getPublishTo().stream())
+                                                                                .distinct().collect(Collectors.toList())),
                                                                 instance.getId(),
                                                                 testRef.getId(),
                                                                 new LoggingApiCallback<>(logger, executor));
@@ -84,7 +89,7 @@ public class SchedulerService {
                                                 timeUnit
                                         );
                                     } else  {
-                                        throw new MonitorConfigurationException("Instance" + instance.getId() + " of type " + instance.getType() + " has missing parameters for test " + executor + "/" +  testRef.getId() + ": " + missingParams);
+                                        throw new MonitorConfigurationException("Instance" + instance.getId() + " of type " + testRef.getSuitableFor() + " has missing parameters for test " + executor + "/" +  testRef.getId() + ": " + missingParams);
                                     }
                                 })));
                     } catch (ApiException e) {
