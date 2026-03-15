@@ -1,10 +1,10 @@
 package ch.hoene.monitor.executor.script.controller;
 
+import ch.hoene.monitor.client.api.ActorApi;
+import ch.hoene.monitor.client.invoker.ApiClient;
 import ch.hoene.monitor.executor.script.model.ScriptTestRef;
 import ch.hoene.monitor.executor.script.model.ScriptTestResult;
 import ch.hoene.monitor.executor.script.model.ScriptType;
-import ch.hoene.monitor.client.api.ActorApi;
-import ch.hoene.monitor.client.invoker.ApiClient;
 import ch.hoene.monitor.model.InstanceIdTestIdBody;
 import ch.hoene.monitor.model.TestExecution;
 import ch.hoene.monitor.model.TestRef;
@@ -40,7 +40,6 @@ public class ExecutorController implements ExecutorApi {
         try {
             return new ResponseEntity<>(Arrays.asList(objectMapper.readValue(new File("./tests/tests.json"), TestRef[].class)), HttpStatusCode.valueOf(200));
         } catch (IOException e) {
-            logger.error(new File(".").getAbsolutePath());
             logger.error(e.getMessage(), e);
             return ResponseEntity.internalServerError().build();
         }
